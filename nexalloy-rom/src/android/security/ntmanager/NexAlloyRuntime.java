@@ -303,7 +303,7 @@ public final class NexAlloyRuntime {
     // Pinned with metadata/payload-manifest.sha256; never mix a new runtime with old assets.
     private static String expectedDigest(String entry) {
         switch (entry) {
-            case "ntmanager/NTXposedEngine.dex": return "1db1bc6d55baca1463f89de40d3728666ecaf389b372f922a42914bef8df0870";
+            case "ntmanager/NTXposedEngine.dex": return "3a4bf265ee3b5c7761276108dff4b9c06b0a25ea9294dee0058462e561d56b97";
             case "ntmanager/arm64-v8a/libc++_shared.so": return "b5d97c38a728afe28d341cda3369f512d35eaf9c680c1b0563cd6a63e395230f";
             case "ntmanager/arm64-v8a/liblsplant.so": return "53eff56530dbd91cdfdee42d5c7b91e6479ef088b7a5906d6abf3e61e1055a7a";
             case "ntmanager/arm64-v8a/libaliuhook.so": return "61c62a44b2b05154ba7d1545c93e1a66bf875c1f7f82fbdba87b8d033d09176c";

@@ -1,6 +1,6 @@
 {
   "source_repository": "https://github.com/tiencv2006/NTFramework",
-  "source_commit": "934fc75cad590a09f68cbe69a036714670374a94",
+  "source_commit": "c08c3facfa135b5c012df62ab545e332f70e875f",
   "role": "Distribution snapshot; canonical framework development remains in NTFramework",
   "hashing": "Binary bytes or UTF-8 text normalized to LF as specified per file",
   "files": [
@@ -26,7 +26,7 @@
     },
     {
       "path": "nexalloy-rom/README.md",
-      "sha256": "fe40daa61ce2489696777a338f0d57881d83777afdb85a69c21967c1c4a42758",
+      "sha256": "6112ec9e7b12f4893c86f9878d6fddaa8a89a0696a7ad93bbc3aa7a61d1cbc54",
       "encoding": "utf8-lf"
     },
     {
@@ -168,6 +168,11 @@
       "path": "nexalloy-rom/deps/interface.jar",
       "sha256": "08711eceb0ffb64cbade3536fa7bb48a5fe3420dfdb1e3edde12cea006ae207f",
       "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/android/app/AndroidAppHelper.smali",
+      "sha256": "8ee5351dd6f9270a2c4d37eda8b9e75d508053a629206d9a88ea004f8dd80c30",
+      "encoding": "utf8-lf"
     },
     {
       "path": "nexalloy-rom/engine-src/de/robv/android/xposed/IXposedHookLoadPackage$Wrapper.smali",
@@ -496,7 +501,7 @@
     },
     {
       "path": "nexalloy-rom/metadata/payload-manifest.sha256",
-      "sha256": "ea678dccddf49a5bb64611fba5c6700da288775bfe40521d2fe5784c32b0d107",
+      "sha256": "92b0278e467e9ba42a19c7b14eebaf6472e45bec52cd2d9a8fea497f362ca881",
       "encoding": "utf8-lf"
     },
     {
@@ -526,7 +531,7 @@
     },
     {
       "path": "nexalloy-rom/payload/SHA256SUMS",
-      "sha256": "9dd2548a99d05761d26eb45cbf5c02935758f84dcf9d5bd8b09f8c5f1e7e0a7f",
+      "sha256": "5282bed42c576b51e8727d200a3c7e28a241a66d521f5c867e2b177a0a3caaf8",
       "encoding": "utf8-lf"
     },
     {
@@ -541,7 +546,7 @@
     },
     {
       "path": "nexalloy-rom/payload/ntmanager/NTXposedEngine.dex",
-      "sha256": "1db1bc6d55baca1463f89de40d3728666ecaf389b372f922a42914bef8df0870",
+      "sha256": "3a4bf265ee3b5c7761276108dff4b9c06b0a25ea9294dee0058462e561d56b97",
       "encoding": "binary"
     },
     {
@@ -601,12 +606,12 @@
     },
     {
       "path": "nexalloy-rom/smali/android/security/ntmanager/NexAlloyRuntime.smali",
-      "sha256": "bbbc7c918a7cd1f4fb912107f63cb98dc922ef532fb185dbe7dcdf6f4192a7d5",
+      "sha256": "c6136bb5cf3e2c3a0ef3fce76c3f1aa997b94e2bb136e451daca95073bb39deb",
       "encoding": "utf8-lf"
     },
     {
       "path": "nexalloy-rom/src/android/security/ntmanager/NexAlloyRuntime.java",
-      "sha256": "7f79cb1119193f584e7cd3b52a583296dfdc0a27bcbf1fb0850909ef9da393c4",
+      "sha256": "ed948799389409059c6577ac4e16adabd5f693c766948a193569efb6a506fee3",
       "encoding": "utf8-lf"
     },
     {
@@ -620,13 +625,18 @@
       "encoding": "utf8-lf"
     },
     {
+      "path": "nexalloy-rom/tests/AppHelperProbe.java",
+      "sha256": "1a117e5c3fe929845fa4a7bc848efa1c0aa00026aafccf9020c124367369fd8c",
+      "encoding": "utf8-lf"
+    },
+    {
       "path": "nexalloy-rom/tests/HookExtrasProbe.java",
       "sha256": "90cc1bb527824c8a4a562e2e1ded8f3fe5586f7c991cda1d978abf01080f484f",
       "encoding": "utf8-lf"
     },
     {
       "path": "app/src/main/java/utils/ntmanager/NexAlloyRuntime.java",
-      "sha256": "7f79cb1119193f584e7cd3b52a583296dfdc0a27bcbf1fb0850909ef9da393c4",
+      "sha256": "ed948799389409059c6577ac4e16adabd5f693c766948a193569efb6a506fee3",
       "encoding": "utf8-lf"
     }
   ],

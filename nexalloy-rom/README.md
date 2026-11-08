@@ -49,6 +49,10 @@ host/build coverage, not a new physical-device validation of this integration.
   SELinux, global hidden-API settings, or other applications' VM policy.
 - The API shim provides invocation-local object extras used by before/after hooks,
   including non-Serializable values; state is not shared between invocations.
+- The shim also supplies `android.app.AndroidAppHelper` application/package/process
+  lookup APIs used by the original TikTok and Instagram download hooks. Queries
+  use live ActivityThread state, including bound app metadata before Application
+  creation, rather than retaining an Activity or a global context override.
 
 The pinned release signer is
 `41b88671a623ad293d06fb1e3e396aaf22cafba8948e3cdec028dc95f2f8e8ba`.
