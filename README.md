@@ -56,7 +56,7 @@ trong `deps`, kèm checksum và giấy phép.
 Từ thư mục gốc repo:
 
 ```sh
-python3 nexalloy-rom/build.py --android-jar /sdk/platforms/android-37/android.jar --d8-jar /sdk/build-tools/37.0.0/lib/d8.jar --api-jar nexalloy-rom/deps/api.jar --interface-jar nexalloy-rom/deps/interface.jar --baksmali-jar /tools/baksmali.jar
+python3 nexalloy-rom/build.py --android-jar /sdk/platforms/android-37/android.jar --d8-jar /sdk/build-tools/37.0.0/lib/d8.jar --api-jar nexalloy-rom/deps/api.jar --interface-jar nexalloy-rom/deps/interface.jar --baksmali-jar /tools/baksmali.jar --smali-jar /tools/smali.jar
 python3 nexalloy-rom/test_integration.py -v
 python3 nexalloy-rom/test_art_optimizer.py -v
 cd nexalloy-rom/payload
@@ -65,8 +65,9 @@ cd ../app
 sha256sum -c SHA256SUMS
 ```
 
-`build.py` build lại bridge/runtime và smali, không tự build lại toàn bộ native
-engine. Nguồn shim, bản vá native và revision upstream nằm trong `engine-src`,
+`build.py` build lại bridge/runtime và smali; `--smali-jar` build lại API shim
+và cập nhật checksum. Script không tự build lại thư viện native.
+Nguồn shim, bản vá native và revision upstream nằm trong `engine-src`,
 `compat`, `metadata` và NOTICE.
 
 Build Manager release bằng khóa riêng của ROM:

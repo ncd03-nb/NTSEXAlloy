@@ -17,9 +17,10 @@ manager packaging enforce this minimum. The actual framework SDK is used, not
 the vendor policy version or device launch API. Android 13 and older skip NexAlloy
 and remove a previously bundled manager; Vector is still removed during migration.
 
-Android 17 was validated on the device (module 2.0.111, 293 YouTube hooks, ART
-optimization, scope/master controls). Android 14–16 currently have host/build
-coverage, not a new physical-device validation of this integration.
+Android 17 was validated on OPlus (module 2.0.111, 293 YouTube hooks, ART
+optimization, scope/master controls) and HyperOS 4 (module 2.0.112, Facebook
+startup and YouTube resources/settings/playback). Android 14–16 currently have
+host/build coverage, not a new physical-device validation of this integration.
 
 ## Behavior
 
@@ -41,6 +42,13 @@ coverage, not a new physical-device validation of this integration.
   service is hosted by SettingsProvider. Other apps cannot write module settings.
 - Native code loads only inside enabled target applications; there is no global
   Zygote injection. Changing scope or master restarts affected application processes.
+- HyperOS attaches the opted-in module before Application construction, ahead of
+  Facebook's custom DEX initialization. OPlus retains its existing late entry.
+  Verified target processes receive local hidden-API reflection access so real
+  Android inflation methods remain visible to the module. This does not change
+  SELinux, global hidden-API settings, or other applications' VM policy.
+- The API shim provides invocation-local object extras used by before/after hooks,
+  including non-Serializable values; state is not shared between invocations.
 
 The pinned release signer is
 `41b88671a623ad293d06fb1e3e396aaf22cafba8948e3cdec028dc95f2f8e8ba`.
@@ -75,7 +83,8 @@ API/interface 102.0.0 JARs when rebuilding:
 ```sh
 python3 build.py --android-jar /sdk/platforms/android-37.0/android.jar \
   --d8-jar /sdk/build-tools/37.0.0/lib/d8.jar \
-  --api-jar api.jar --interface-jar interface.jar --baksmali-jar baksmali.jar
+  --api-jar api.jar --interface-jar interface.jar --baksmali-jar baksmali.jar \
+  --smali-jar smali.jar
 python3 test_integration.py -v
 python3 test_art_optimizer.py -v
 cd controller-app
@@ -85,6 +94,9 @@ cd controller-app
 Sign the resulting manager with the ROM manager key expected by the service.
 The prebuilt APK's digest is in `app/SHA256SUMS`; engine/bridge digests are in
 `payload/SHA256SUMS`. Never include compile-only ABI stubs in the runtime DEX.
+`--smali-jar` rebuilds the API shim and updates its runtime checksum pin.
+`tests/HookExtrasProbe.java` exercises the rebuilt shim on Android, checking
+inherited methods, non-Serializable object identity, invocation isolation and nulls.
 
 Host checks cover removal boundaries, metadata/hash updates, symlink rejection,
 idempotent framework integration, unknown layouts and payload contents. Host

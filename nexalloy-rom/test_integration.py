@@ -52,6 +52,20 @@ class IntegrationTest(unittest.TestCase):
         removal.remove(self.root)
         self.assertEqual(fc.read_text(),'/system_ext/app/VectorOther/Other\\.apk u:object_r:system_file:s0\n')
     def fixture(self):
+        self.put('classes3.dex.out/android/app/Instrumentation.smali','''.class Landroid/app/Instrumentation;
+.method public static newApplication(Ljava/lang/Class;Landroid/content/Context;)Landroid/app/Application;
+    .registers 4
+    invoke-virtual {p1}, Landroid/content/Context;->getClassLoader()Ljava/lang/ClassLoader;
+    const/4 v0, 0x0
+    return-object v0
+.end method
+.method public newApplication(Ljava/lang/ClassLoader;Ljava/lang/String;Landroid/content/Context;)Landroid/app/Application;
+    .locals 2
+    invoke-virtual {p3}, Landroid/content/Context;->getClassLoader()Ljava/lang/ClassLoader;
+    const/4 v0, 0x0
+    return-object v0
+.end method
+''')
         self.put('classes.dex.out/android/content/ContentProvider$Transport.smali','''.class Landroid/content/ContentProvider$Transport;
 .method public call(Landroid/content/AttributionSource;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Landroid/os/Bundle;
     .registers 8
@@ -73,6 +87,11 @@ class IntegrationTest(unittest.TestCase):
         integration.patch_framework(self.root)
         self.assertEqual(before,{p.relative_to(self.root):p.read_bytes() for p in self.root.rglob('*') if p.is_file()})
         self.assertEqual(hook.read_text().count('NexAlloyRuntime;->init('),1)
+        application=(self.root/'classes3.dex.out/android/app/Instrumentation.smali').read_text()
+        self.assertEqual(application.count('NexAlloyRuntime;->initBeforeApplication('),2)
+        for register, body in zip(('p1','p3'), application.split('.method ')[1:]):
+            self.assertIn('invoke-static/range {'+register+' .. '+register+'}',body)
+            self.assertLess(body.index('NexAlloyRuntime;->initBeforeApplication('),body.index('invoke-virtual'))
         provider=self.root/'classes.dex.out/android/content/ContentProvider$Transport.smali'
         self.assertIn(':nt_original_provider_call\n    iget-object v0, p0,',provider.read_text())
     def test_unknown_transport_layout_rejected(self):
@@ -80,6 +99,14 @@ class IntegrationTest(unittest.TestCase):
         p.write_text(p.read_text().replace('.registers 8','.registers 22'))
         with self.assertRaises(ValueError):integration.patch_framework(self.root)
         self.assertFalse((self.root/'ntmanager').exists())
+    def test_unknown_application_layout_rejected_before_mutation(self):
+        self.fixture()
+        application=self.root/'classes3.dex.out/android/app/Instrumentation.smali'
+        application.write_text(application.read_text().replace('newApplication(', 'unknownApplication('))
+        before={p.relative_to(self.root):p.read_bytes() for p in self.root.rglob('*') if p.is_file()}
+        with self.assertRaisesRegex(ValueError,'Expected one Instrumentation'):
+            integration.patch_framework(self.root)
+        self.assertEqual(before,{p.relative_to(self.root):p.read_bytes() for p in self.root.rglob('*') if p.is_file()})
     def test_sdk_uses_framework_not_vendor_or_launch_api(self):
         self.put('system/system/build.prop','ro.build.version.sdk=34\nro.product.first_api_level=30\n')
         self.put('vendor/build.prop','ro.vendor.build.version.sdk=30\n')

@@ -38,6 +38,29 @@ def verify():
         raise ValueError('Module APKs must not be embedded')
     return files
 
+def patch_application_creation(text):
+    for signature, register in (
+        ('newApplication(Ljava/lang/Class;Landroid/content/Context;)Landroid/app/Application;', 'p1'),
+        ('newApplication(Ljava/lang/ClassLoader;Ljava/lang/String;Landroid/content/Context;)Landroid/app/Application;', 'p3'),
+    ):
+        pattern = r'(?m)^\.method [^\n]* ' + re.escape(signature) + r'\n[\s\S]*?^\.end method'
+        matches = list(re.finditer(pattern, text))
+        if len(matches) != 1:
+            raise ValueError('Expected one Instrumentation ' + signature)
+        method = matches[0]
+        body = method[0]
+        if 'NexAlloyRuntime;->initBeforeApplication(' in body:
+            continue
+        registers = re.search(r'(?m)^\s*\.(?:locals|registers) \d+\n', body)
+        if not registers:
+            raise ValueError('Application creation register declaration missing')
+        at = registers.end()
+        body = body[:at] + ('    invoke-static/range {' + register + ' .. ' + register +
+            '}, Landroid/security/ntmanager/NexAlloyRuntime;->initBeforeApplication(Landroid/content/Context;)V\n') + body[at:]
+        text = text[:method.start()] + body + text[method.end():]
+    return text
+
+
 def patch_framework(tree, sdk=MIN_SDK):
     if int(sdk) < MIN_SDK:
         print('[NexAlloy] Skipped: requires Android 14 / API 34+')
@@ -46,9 +69,13 @@ def patch_framework(tree, sdk=MIN_SDK):
     transport=list(tree.rglob('android/content/ContentProvider$Transport.smali'))
     hooks=list(tree.rglob('android/security/ntmanager/NTHooks.smali'))
     if len(transport)!=1 or len(hooks)!=1: raise ValueError('Expected exactly one provider transport and NTHooks')
+    instrumentation=list(tree.rglob('android/app/Instrumentation.smali'))
+    if len(instrumentation)!=1: raise ValueError('Expected exactly one Instrumentation')
+    application_text=patch_application_creation(instrumentation[0].read_text(encoding='utf-8'))
     # Validate the supported provider layout before editing the tree.
     patcher=load('nexalloy_transport',HERE/'scripts/patch-provider-transport.py')
     patcher.patch(transport[0])
+    instrumentation[0].write_text(application_text,encoding='utf-8',newline='\n')
     hook=hooks[0];text=hook.read_text(encoding='utf-8')
     signature='.method public static initContext(Landroid/content/Context;)V'
     start=text.index(signature);end=text.index('.end method',start)

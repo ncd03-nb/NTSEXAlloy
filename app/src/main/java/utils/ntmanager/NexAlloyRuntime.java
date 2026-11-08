@@ -44,7 +44,7 @@ public final class NexAlloyRuntime {
     private static final String APP_SETTINGS_PREFIX = "nt_nexalloy_app_";
     private static final String ORIGINAL_MODULE = "io.github.chsbuffer.revancedxposed";
     private static final String BRIDGE_ENTRY = "ntmanager/NTModernBridge.dex";
-    private static final String BRIDGE_DIGEST = "5df1239761af86ce667ea409463eb314247053271251f5e1138d4d4ecccfe784";
+    private static final String BRIDGE_DIGEST = "6f54b399a7aef98d2cc3cbb4194b91ffb65432099d0821e185c41b9ad8230852";
 
     private static Class<?> settingsService;
     private static final Set<String> INITIALIZED = new HashSet<>();
@@ -80,6 +80,22 @@ public final class NexAlloyRuntime {
             if (cause instanceof SecurityException) throw (SecurityException) cause;
             if (cause instanceof IllegalArgumentException) throw (IllegalArgumentException) cause;
             throw new IllegalStateException("NexAlloy ROM service failed: " + cause, cause);
+        }
+    }
+
+    public static void initBeforeApplication(Context context) {
+        try {
+            if (android.os.Build.VERSION.SDK_INT < 34 || context == null ||
+                    ORIGINAL_MODULE.equals(context.getPackageName()) ||
+                    context.getApplicationInfo().uid % 100000 < 10000) return;
+            // Keep the existing OPlus lifecycle. HyperOS starts Facebook's
+            // custom DEX loader during Application.attach, before the late hook.
+            java.lang.reflect.Method get = Class.forName("android.os.SystemProperties").getMethod("get", String.class);
+            String hyperos = (String) get.invoke(null, "ro.mi.os.version.name");
+            String miui = (String) get.invoke(null, "ro.miui.ui.version.name");
+            if (!hyperos.isEmpty() || !miui.isEmpty()) init(context);
+        } catch (Throwable error) {
+            Log.w(TAG, "Early module attach failed", error);
         }
     }
 
@@ -130,6 +146,12 @@ public final class NexAlloyRuntime {
             ClassLoader bridgeLoader = newDelegateLastClassLoader(bridge.getAbsolutePath(), directory.getAbsolutePath(), engineLoader);
             Class<?> contract = Class.forName("com.nothingsvn.nexalloy.BridgeContract", true, bridgeLoader);
             Bundle verified = (Bundle) contract.getMethod("inspectArchive", Context.class, Bundle.class).invoke(null, context, original);
+            // Run from the trusted framework caller after archive verification,
+            // before module classes reflect into Android internals. HyperOS may
+            // hide real framework methods from app loaders. This VM setting is
+            // local to this opted-in process, never a system property or an
+            // exemption for other apps.
+            enableModuleReflection();
             Class<?> host = Class.forName("com.nothingsvn.nexalloy.ModuleHost", true, bridgeLoader);
             File nativeDir = extractModuleNative(context, verified, abi);
             loadNative(engineLoader, cxx, lsplant, aliuhook);
@@ -139,6 +161,14 @@ public final class NexAlloyRuntime {
             status(context, "original APK attach failed for " + packageName, unwrap(error));
             // A partial native attach must not be retried in the same process.
         }
+    }
+
+    private static void enableModuleReflection() throws Exception {
+        Class<?> vmRuntime = Class.forName("dalvik.system.VMRuntime");
+        Object runtime = vmRuntime.getDeclaredMethod("getRuntime").invoke(null);
+        vmRuntime.getDeclaredMethod("setHiddenApiExemptions", String[].class)
+                .invoke(runtime, (Object) new String[] { "L" });
+        Log.i(TAG, "Module reflection enabled in selected app process");
     }
 
     private static File extractModuleNative(Context context, Bundle module, String abi) throws Exception {
@@ -273,7 +303,7 @@ public final class NexAlloyRuntime {
     // Pinned with metadata/payload-manifest.sha256; never mix a new runtime with old assets.
     private static String expectedDigest(String entry) {
         switch (entry) {
-            case "ntmanager/NTXposedEngine.dex": return "2b488bc44a04d3e74aa841464cb6df11f9b34935c739d5bab7cec995a2c97627";
+            case "ntmanager/NTXposedEngine.dex": return "1db1bc6d55baca1463f89de40d3728666ecaf389b372f922a42914bef8df0870";
             case "ntmanager/arm64-v8a/libc++_shared.so": return "b5d97c38a728afe28d341cda3369f512d35eaf9c680c1b0563cd6a63e395230f";
             case "ntmanager/arm64-v8a/liblsplant.so": return "53eff56530dbd91cdfdee42d5c7b91e6479ef088b7a5906d6abf3e61e1055a7a";
             case "ntmanager/arm64-v8a/libaliuhook.so": return "61c62a44b2b05154ba7d1545c93e1a66bf875c1f7f82fbdba87b8d033d09176c";

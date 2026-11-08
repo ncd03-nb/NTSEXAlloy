@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Patch only the two affected DEX files, preserving all other framework entries."""
+"""Patch affected framework DEX files, preserving all other framework entries."""
 import argparse, copy, hashlib, importlib.util, json, re, subprocess, zipfile
 from pathlib import Path
 
@@ -18,7 +18,8 @@ def main():
     integration.verify()
     spec=importlib.util.spec_from_file_location('inventory',ROOT/'scripts/dex-inventory.py')
     inventory=importlib.util.module_from_spec(spec);spec.loader.exec_module(inventory)
-    targets={'Landroid/security/ntmanager/NTHooks;','Landroid/content/ContentProvider$Transport;'}
+    targets={'Landroid/security/ntmanager/NTHooks;','Landroid/content/ContentProvider$Transport;',
+             'Landroid/app/Instrumentation;'}
     tree=work/'framework.jar.out';tree.mkdir(exist_ok=False)
     with zipfile.ZipFile(args.framework) as src:
         assert len(src.namelist())==len(set(src.namelist())), 'Duplicate framework ZIP entries'

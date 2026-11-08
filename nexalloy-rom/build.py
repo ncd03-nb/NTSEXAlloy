@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Rebuild the bridge/runtime from source. Pass official API/interface 102 JARs."""
-import argparse, hashlib, os, shutil, subprocess, sys
+import argparse, hashlib, os, re, shutil, subprocess, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 
@@ -10,7 +10,21 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('android-jar','d8-jar','api-jar','interface-jar','baksmali-jar'):
         p.add_argument('--'+name,type=Path,required=True)
+    p.add_argument('--smali-jar',type=Path,help='Also rebuild the API shim DEX from engine-src')
     a=p.parse_args(); build=ROOT/'build'; build.mkdir(exist_ok=True)
+    if a.smali_jar:
+        engine=ROOT/'payload/ntmanager/NTXposedEngine.dex'
+        run('java','-jar',a.smali_jar,'a','--api','23',ROOT/'engine-src','-o',engine)
+        digest=hashlib.sha256(engine.read_bytes()).hexdigest()
+        source=ROOT/'src/android/security/ntmanager/NexAlloyRuntime.java'
+        text,count=re.subn(r'(case "ntmanager/NTXposedEngine.dex": return ")[^"]+(";)',
+                          lambda match:match[1]+digest+match[2],source.read_text(encoding='utf-8'))
+        if count!=1:raise ValueError('Engine digest pin missing')
+        source.write_text(text,encoding='utf-8',newline='\n')
+        manifest=ROOT/'metadata/payload-manifest.sha256'
+        lines=manifest.read_text().splitlines()
+        manifest.write_text('\n'.join(digest+'  NTXposedEngine.dex' if line.endswith('  NTXposedEngine.dex')
+                                      else line for line in lines)+'\n',newline='\n')
     stubs=build/'stubs';stubs.mkdir(exist_ok=True)
     run('javac','--release','17','-d',stubs,*sorted((ROOT/'compile-stubs').rglob('*.java')))
     legacy=build/'compile-only.jar';run('jar','cf',legacy,'-C',stubs,'.')
