@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NexAlloy Manager</string>
+    <string name="runtime_missing">The NexAlloy ROM service is unavailable.</string>
+    <string name="cannot_open">This app has no launcher activity.</string>
+    <string name="failed">Operation failed.</string>
+    <string name="refresh">Refresh</string>
+    <string name="open_module">Open NexAlloy</string>
+    <string name="install_message">NexAlloy is not installed or its signature is unsupported. Install the original APK from the release page, then return here. No module is installed automatically.</string>
+    <string name="install_module">Install NexAlloy</string>
+    <string name="search_apps">Search apps</string>
+    <string name="installed_only">Installed apps only</string>
+    <string name="no_apps">No matching apps.</string>
+    <string name="not_installed">Not installed</string>
+    <string name="done">Done. Restart the app to apply.</string>
+    <string name="open_app">Open</string>
+    <string name="app_info">App info</string>
+    <string name="force_stop">Force stop</string>
+    <string name="optimize">Re-optimize</string>
+    <string name="optimize_hint">Stop the app and reset compiled code to verification mode. Changes apply on the next launch.</string>
+    <string name="open_releases">Open releases</string>
+    <string name="later">Later</string>
+    <string name="master">Enable NexAlloy</string>
+</resources>

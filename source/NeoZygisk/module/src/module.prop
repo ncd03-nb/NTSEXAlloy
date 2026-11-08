@@ -1,8 +1,0 @@
-id=${moduleId}
-name=${moduleName}
-version=${versionName}
-versionCode=${versionCode}
-author=JingMatrix
-description=Zygote injection with ptrace.
-updateJson=${updateJson}
-managedFeatures=kernel_umount

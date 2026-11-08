@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NexAlloy Manager</string>
+    <string name="runtime_missing">Chưa có dịch vụ NexAlloy trong ROM.</string>
+    <string name="cannot_open">Ứng dụng không có màn hình khởi chạy.</string>
+    <string name="failed">Thao tác thất bại.</string>
+    <string name="refresh">Làm mới</string>
+    <string name="open_module">Mở NexAlloy</string>
+    <string name="install_message">Chưa cài NexAlloy hoặc chữ ký APK chưa được hỗ trợ. Hãy cài APK gốc từ trang release rồi quay lại đây. Manager không tự cài mô-đun.</string>
+    <string name="install_module">Cài NexAlloy</string>
+    <string name="search_apps">Tìm ứng dụng</string>
+    <string name="installed_only">Chỉ app đã cài</string>
+    <string name="no_apps">Không có ứng dụng phù hợp.</string>
+    <string name="not_installed">Chưa cài đặt</string>
+    <string name="done">Đã xong. Mở lại ứng dụng để áp dụng.</string>
+    <string name="open_app">Mở</string>
+    <string name="app_info">Thông tin ứng dụng</string>
+    <string name="force_stop">Buộc dừng</string>
+    <string name="optimize">Tối ưu lại</string>
+    <string name="optimize_hint">Dừng ứng dụng và biên dịch lại ở chế độ xác minh để bỏ mã AOT đã nội tuyến. Áp dụng khi mở lại app.</string>
+    <string name="open_releases">Mở trang release</string>
+    <string name="later">Để sau</string>
+    <string name="master">Bật NexAlloy</string>
+</resources>

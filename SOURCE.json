@@ -1,0 +1,632 @@
+{
+  "source_repository": "https://github.com/tiencv2006/NTFramework",
+  "source_commit": "724a787b336e3896290dc2637f5f16f0b91d8604",
+  "role": "Distribution snapshot; canonical framework development remains in NTFramework",
+  "hashing": "Binary bytes or UTF-8 text normalized to LF as specified per file",
+  "files": [
+    {
+      "path": "nexalloy-rom/.gitattributes",
+      "sha256": "584d694b8765df128eec0f4996b943db97d10f437ad5c8b7c763c0f80a861c39",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/.gitignore",
+      "sha256": "0860d436a921ca6f2206c34eb4cd9a849c3f64894da42faf05152a70aa5323d6",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/LICENSE",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/NOTICE.md",
+      "sha256": "c092230cf03e2beef3cd68c94c24be349a83e88ea59a9adc51d13d5253829341",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/README.md",
+      "sha256": "2eee31584535c3e7d264762434ca0bf529a24c239ce8a31060801a8cdc0e1a31",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/app/NexAlloyManager.apk",
+      "sha256": "96262ee0e329423fa3a33f4122bfa9f7820dc103e1b2596587e2ab11c43a2b57",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/app/SHA256SUMS",
+      "sha256": "15d1087ff1cc5b80d3de0de9fc2992c1f773ccea4d24723738d8b24b69603315",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/build.py",
+      "sha256": "e0bdbc826a64c51ef3bd9e56ad52e80fde65239424c21c59984140089a150fe3",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/compat/native/aliuhook-cmake.patch",
+      "sha256": "f9d1000e9ec01fede29a7b0e9c8427befe2a9e27b26d5aa07a18409f93d5a5a1",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/compat/native/lsplant-abi.patch",
+      "sha256": "de0b8f33d811e76e19ccde6e223146458e148be8b564da641d522cf3ece8e4ed",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/compile-stubs/de/robv/android/xposed/XC_MethodHook.java",
+      "sha256": "433c9227e4c7a8dcc85d28e02eaf0ca5eafbeddac7a9e98d852dc6f57dea1b18",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/compile-stubs/de/robv/android/xposed/XposedBridge.java",
+      "sha256": "de30226cbaabac7812b7efac972d331852ca9684a9cfc60a2c654c25a2f39b40",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/README.md",
+      "sha256": "2bba8e6064c7d04ce76bb971c0a8e0e173c2d9e22f08848fde0df0472fa424fb",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/app/build.gradle.kts",
+      "sha256": "cf96b1c456fb6d0096f999d3a99a62f7559a690edb389db7b9e8551d362402cf",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/app/proguard-rules.pro",
+      "sha256": "0719a7e6730c514536a43bbcae69be1e2a7f85b23d4343056b9d191fda0ef839",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/app/src/main/AndroidManifest.xml",
+      "sha256": "c54c666203fcc624c137fa164654cb8aa5b77ef7495edaf1e5cf3b8e294fdf21",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/app/src/main/java/com/hma/nexalloy/MainActivity.kt",
+      "sha256": "9e50b0b4d215f4adc08c31679d89e8e5f8ba715de726bdd10897231d0b0ca479",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/app/src/main/java/com/hma/nexalloy/NexAlloyStore.kt",
+      "sha256": "f2ff5a60f9b7ea0c182b59d2d73b4f19233aebc791c680ffa755f6fad5cba3a4",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/app/src/main/res/drawable/ic_launcher.xml",
+      "sha256": "5a3b9d2348e9240b2e9613cc317d22a8121ccd66663ed0685ed877f8ef721d7d",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/app/src/main/res/values-vi/strings.xml",
+      "sha256": "40a32679842870d5cd5581ffac6a0d09e314709718d0c3b8b9580089e833d7e8",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/app/src/main/res/values/strings.xml",
+      "sha256": "6a18fbe9fe331ff190fd4273f5bef58e67f7fa539667883e9ac4624178b6b350",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/app/src/main/res/values/themes.xml",
+      "sha256": "6c63e149a48d93a59fc9f2b1f37cb35e42a48a5d349ccf39e1a7ff4a1634b36f",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/build.gradle.kts",
+      "sha256": "e5531f277ccc9d892e70e9a6ff7c49b951d8e0d0789b0d47e01412d61df6575e",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/gradle.properties",
+      "sha256": "5fa11fcbbb5a1c9938f9a2ed853eb7de09bf21e9ad8d601176b66f700d3c5a16",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/gradle/libs.versions.toml",
+      "sha256": "51b5b4988259eaa554afbf6bc6b087da4619784fe45faad19e8d2abf84c2ec1a",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "76805e32c009c0cf0dd5d206bddc9fb22ea42e84db904b764f3047de095493f3",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "757a39ebc9428cf0bb532694bdcc6d3d36d2d54014919c9a22a2f58c5561ca70",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/gradlew",
+      "sha256": "3238afb2aed5cb16eb7d6718077e7138059108f007b54179e9cc157c5a6e0e89",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/gradlew.bat",
+      "sha256": "94102713eb8fb22d032397924c0f38ab2da783ba60d07054339f1190a0c4e2cd",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/controller-app/settings.gradle.kts",
+      "sha256": "6575a52c511cfe2bff18abb4e44908a8cf57ca94e23d014852a217758f942243",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/deps/SHA256SUMS",
+      "sha256": "99f921cd922d0eef3144316b26eb3aae9fb0279ee58a8730d82f6f9262f81aa6",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/deps/api.jar",
+      "sha256": "a515dd7a53cd7a47c05e101dff77d61acb3091a97b20a885b9ea3494412db985",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/deps/interface.jar",
+      "sha256": "08711eceb0ffb64cbade3536fa7bb48a5fe3420dfdb1e3edde12cea006ae207f",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/IXposedHookLoadPackage$Wrapper.smali",
+      "sha256": "399030a487472e87909e9bc970be4d0819d83af52169400fac385e93af4267e2",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/IXposedHookLoadPackage.smali",
+      "sha256": "357303f0492ae9bd01cb8b32570c6c8e334d149f80e0c4b55be1147e22549a95",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/IXposedHookZygoteInit$StartupParam.smali",
+      "sha256": "b424b9d17ac4e6dbe760c488eb9d2403c4845bf88498605ddfb376346c7c8bc0",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/IXposedHookZygoteInit.smali",
+      "sha256": "d40c786eda7de1ad444db0cf2f9b85d74f109b6488b0dd034f4d0f81e14146f3",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/IXposedMod.smali",
+      "sha256": "78e6695c9c768886beff14d7754ccb02cf1ff597e2c7e26e903a573e3ca40242",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XC_MethodHook$MethodHookParam.smali",
+      "sha256": "459ea7aedac252e74a84b2d889a8f8d4b30e1f3f195d674d0abe48f093862dde",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XC_MethodHook$Unhook.smali",
+      "sha256": "cb2f28990149ddd8141d9b3cdac4e23a18efa8a180fe591e23378209b2d8c9c8",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XC_MethodHook.smali",
+      "sha256": "1866d04f0a23f5156651dbc79f8bbb933918b744898dfa788ab1e7d7ccbba005",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XC_MethodReplacement$1.smali",
+      "sha256": "1b6d2fbc3075a61b15c39d71fa5f9bc656a54a038f88a94194f2f70f0a2d5e27",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XC_MethodReplacement$2.smali",
+      "sha256": "a75a65c3ab346562286931f41e89d02b62f004b89f975bc1db95670903c60022",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XC_MethodReplacement.smali",
+      "sha256": "4e5ca4cbb7428d0605f4bb6666fe4728b4f09934aa0b512c243e989eec159981",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XSharedPreferences$0.smali",
+      "sha256": "ac034f3b3178b2ad2c250f63170f74b204dd5d522a7a727c028ad29ed931dc59",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XSharedPreferences$Loader$-CC.smali",
+      "sha256": "65a6489de9b3657953fb3d7114c4a2556a52b141c8e054d5ea3f01e0dcac9e0d",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XSharedPreferences$Loader$0.smali",
+      "sha256": "4d270eca0da47709e530a41edd124d3120b738ef2e7337122af318b6c61ca097",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XSharedPreferences$Loader$1.smali",
+      "sha256": "cd0d188423f2f7d134c1547b9ed165b2748d8dd9df8b3b0b2dcbd8779f6e5d30",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XSharedPreferences$Loader$2.smali",
+      "sha256": "6b63a74376bde595d4f9b02d50a69b442dde47e3a7e12734046fa3ef8041b2ac",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XSharedPreferences$Loader.smali",
+      "sha256": "3aea14213edb8afeff1af800ce02e5e7a72ec95bcf45c7f81d10f425c33cfcfb",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XSharedPreferences.smali",
+      "sha256": "e4a0a75485feb889612104e84f28c6969af32218d8b564b7f1d3e86cae995b11",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XposedBridge$CopyOnWriteSortedSet.smali",
+      "sha256": "ef65c6c0114595134e4ab401d41aaf7a23bad94121f18b0547eec2295fd66755",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XposedBridge$HookInfo.smali",
+      "sha256": "c3d28374b0425dc037ecaeb8440a5236010f94c7614b5d96dc668f36f8537d7e",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XposedBridge.smali",
+      "sha256": "bdf7938bdb7163dabdc08afe9c661a6a414c1d93dd102ca7f106f91f843cd7e2",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XposedHelpers$1.smali",
+      "sha256": "24ce36d98513bcab80a52601752d1ff042fafad836938e06652f38d08c701a2f",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XposedHelpers$ClassNotFoundError.smali",
+      "sha256": "1925f38696ce78cd59072ba79efdc6f59963f43e1688445faa1b627169b4beb6",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XposedHelpers$InvocationTargetError.smali",
+      "sha256": "79ac7f372d8d2363d835f26ac60482c0baa278ff45e2323a914a8e1bc5311a79",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/XposedHelpers.smali",
+      "sha256": "809c33c5b9fe13f7a03955db695d585cf008ec716615b181ad979e88de89d2f7",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/callbacks/IXUnhook.smali",
+      "sha256": "82d64d00435a2c2b78738e35c52ed96cad763f2d1eafebb0dc8990b553e7632c",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/callbacks/XC_LoadPackage$LoadPackageParam.smali",
+      "sha256": "3299c998b206197ac3819b539bcb072d3f968f65515cf8fb2748be7da1acb157",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/callbacks/XC_LoadPackage.smali",
+      "sha256": "f7173b87c9f79aeebd41bce225b97eec44c044eb9ed8e996a781b4a340efb5e4",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/callbacks/XCallback$Param$SerializeWrapper.smali",
+      "sha256": "eba2e4a9cfa8e13a98a8e297864042e308eb7a42d5e332783c47ec7660724cbd",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/callbacks/XCallback$Param.smali",
+      "sha256": "b470812f4f3ab35e3ef0e55c4f00b25ed3a8770e037d6d8df081e8dc5ea48581",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/de/robv/android/xposed/callbacks/XCallback.smali",
+      "sha256": "86b1b21a8a20dfb651d1edc0047170e2eee3ace5faa5e4ded5f6787de0adf230",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/ArrayUtils.smali",
+      "sha256": "2917c74141f7d061548e5ac4167ed7274bbf661d583315088b8c203dd01a5c9f",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/CharSequenceUtils.smali",
+      "sha256": "598d0f203107941d63a9ecec4e148cad9c9cf6150f0fa32808d3b36ceb937d68",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/CharUtils.smali",
+      "sha256": "482e1a656adaeaed140dfc654ce4add5ae9cb2280990b8a0f6a70b6481984bb8",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/ClassUtils.smali",
+      "sha256": "33c46bab089151b354c2336ef6140bf29b9a5fc527acf15b45875bb619b82bbd",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/JavaVersion.smali",
+      "sha256": "5eb6bffc9a255b34be5bec73611f16174c571d0c7a9ed33f5264b1dc75b5a5b5",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/ObjectUtils$Null.smali",
+      "sha256": "9ed1e03ccf08f60b02e0838e7ea866ea2d054580d38deb0cfeaf507a7e6f6872",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/ObjectUtils.smali",
+      "sha256": "a949b3f280dd0a099d3d743cb02f45a91a423e6f004c8d5c6824ca3d9cb4491e",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/StringUtils$InitStripAccents.smali",
+      "sha256": "353222f8d938136456cdce1ba8bedf9b2277ef023577be110cecca85174f84c0",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/StringUtils.smali",
+      "sha256": "cc56df9644ee9d5fa47aba1d42b69a24ca25a221488fe8b23a74b12841d6b8ee",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/SystemUtils.smali",
+      "sha256": "ec44ec9b1d657f626d7f3d9f74f3347ba2ed95943e808c431e606bdd18d56581",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/Validate.smali",
+      "sha256": "2c064892d84083919053dfb8bcd9536272780ad2ebb195df3edd4bc26122e402",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/Builder.smali",
+      "sha256": "ae92bd0307b44a466f03da26072aaadc6689aa12db9967e28374de2421310b4f",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/CompareToBuilder.smali",
+      "sha256": "b7336f0b00b61d47a536c6797ed740e5bcd359d4d6c0cee0c86787e81b8675bd",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/EqualsBuilder.smali",
+      "sha256": "6d6579c2eca631b732c9d035636732822bfaf5a6445eb39ab8cf1eece40dffc1",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/HashCodeBuilder.smali",
+      "sha256": "7f0f22e0488f8a5827bce8892736e2c8abe61615169ab5d69da49dd4d3c7a28d",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/IDKey.smali",
+      "sha256": "ee055ab2f132011b1c73a17f9d2038faef1b7cc515ab7340fe901937238f38a1",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/ReflectionToStringBuilder.smali",
+      "sha256": "96f3ab53e5212f8f3403317d265e3e9bbe9dedc3a44c53583ac83399ee251b8a",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/ToStringBuilder.smali",
+      "sha256": "4a8ae8f7f44ea74cd05f57827f1170bc8810aa2750ab10347ec6d274d3ae6e4f",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/ToStringStyle$DefaultToStringStyle.smali",
+      "sha256": "47542cf3ca928ee2d1b98aede5c2668665e269fc49fcc3ab8888ddfc384f5404",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/ToStringStyle$MultiLineToStringStyle.smali",
+      "sha256": "b64e300a828de39c9d65454261e11f4520f88c67113ec39dbc3c4f664ef835c5",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/ToStringStyle$NoFieldNameToStringStyle.smali",
+      "sha256": "5f6c6e0d57f50a3651d86376279459e17714acdab696043ba70012c09481ce64",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/ToStringStyle$ShortPrefixToStringStyle.smali",
+      "sha256": "de792bcdbde112bd807d8b101ee5409a3bdc0d1d5c5a80b917c2f05a863fc689",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/ToStringStyle$SimpleToStringStyle.smali",
+      "sha256": "396956bc03f6ff69648e895e7d18a7a14f0f1ac40174edfb066d3ea072d13677",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/builder/ToStringStyle.smali",
+      "sha256": "bdca016656b2f470a16735f93449c49da1ee665cec06213322c72bb746c8c74a",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/exception/CloneFailedException.smali",
+      "sha256": "0effeb6878d7ed03918ff78affb5faef9e401aa75c3c98793b0e6c4b567a1d8a",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/mutable/Mutable.smali",
+      "sha256": "1b6386aba7ce8159a3f4862e1660ac1e555f5edf9724154b818ae62393cba9c9",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/mutable/MutableInt.smali",
+      "sha256": "983d7b54fdf298daf10597a8a76bbb58d846c0306ea4f1a438465008642fa2ad",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/reflect/MemberUtils.smali",
+      "sha256": "cadd09001ca6ae58e0b2234d997a3a83e4f6b6246773baa9a3f78661a52ea2dd",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/reflect/MethodUtils.smali",
+      "sha256": "ff79f2f7ea3f2726d7038404a85837fef486736ea5a58493c657b154da520e88",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/tuple/ImmutablePair.smali",
+      "sha256": "5eff4ec68c712f2475598da0d5f48a05c337fdc08dcbdc2db44f59c6940bc195",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/external/org/apache/commons/lang3/tuple/Pair.smali",
+      "sha256": "45710c3c53525840166a72c9e5db93b973f8a00e76823d803de66935e4667aad",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/engine-src/io/github/nexalloy/NTNativeLoader.smali",
+      "sha256": "00bcdb7e67d67b47e66995df45bb9a83b3eb9bc1c640172dbc2b28be2f094b38",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/install.py",
+      "sha256": "9f5f552c3b4d9f3d6a9fa4820be96543e902438ba5821a161b750a322bade303",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/metadata/LICENSE-libxposed.txt",
+      "sha256": "5186d64cb76cbb7e1566e096e20ff90f6e434aa3b109f9c3ce43a161b2d7831f",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/metadata/payload-manifest.sha256",
+      "sha256": "640ed34ea28225324a62deb9b7160128712c14e97e3a0f2eb965d6a1b4785659",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/metadata/release.properties",
+      "sha256": "1e79dd2406452fc9e0c07a5bc1db52b1d1971d22a5536202d4405fea2e37e216",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/modern-src/com/nothingsvn/nexalloy/ArtOptimizer.java",
+      "sha256": "02c30011146a6020d366ab549850cb6313ab3aca3186208beec53301ac9a2d2f",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/modern-src/com/nothingsvn/nexalloy/ModuleHost.java",
+      "sha256": "fcd734dc3b748e76b11d5a9041830e46a8d4acf6ddb1ee5c01e7c83ce89b4a80",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/modern-src/com/nothingsvn/nexalloy/NexAlloyService.java",
+      "sha256": "16f1c1c1f0d1c47dc2dbb451842133ecf4b705e6e016a950d22bc62cc90b2761",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/patch-jar.py",
+      "sha256": "398dc279eed8f6d37e67a2d854f01e911637f7682f0b5869f473c8c12d200450",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/payload/SHA256SUMS",
+      "sha256": "5bdce04c34690e39db08563b41ad0dca38c89e3e5dde08c8173489bc9dc8982a",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/payload/ntmanager/LICENSE-libxposed.txt",
+      "sha256": "5186d64cb76cbb7e1566e096e20ff90f6e434aa3b109f9c3ce43a161b2d7831f",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/payload/ntmanager/NTModernBridge.dex",
+      "sha256": "5df1239761af86ce667ea409463eb314247053271251f5e1138d4d4ecccfe784",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/payload/ntmanager/NTXposedEngine.dex",
+      "sha256": "2b488bc44a04d3e74aa841464cb6df11f9b34935c739d5bab7cec995a2c97627",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/payload/ntmanager/arm64-v8a/libaliuhook.so",
+      "sha256": "61c62a44b2b05154ba7d1545c93e1a66bf875c1f7f82fbdba87b8d033d09176c",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/payload/ntmanager/arm64-v8a/libc++_shared.so",
+      "sha256": "b5d97c38a728afe28d341cda3369f512d35eaf9c680c1b0563cd6a63e395230f",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/payload/ntmanager/arm64-v8a/liblsplant.so",
+      "sha256": "53eff56530dbd91cdfdee42d5c7b91e6479ef088b7a5906d6abf3e61e1055a7a",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/payload/ntmanager/armeabi-v7a/libaliuhook.so",
+      "sha256": "fc545ee9c7c1b367e936973139da3db2b290e6e767fef332ca7bb0619982ef05",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/payload/ntmanager/armeabi-v7a/libc++_shared.so",
+      "sha256": "38331a1efcb446eb1a0db440a8db8f41fa4fb698d15c061ab8c491426531c2c0",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/payload/ntmanager/armeabi-v7a/liblsplant.so",
+      "sha256": "fc965c4d2de9137e49796aa4278b0281df54694e9b0f12c82b1899909b2508cd",
+      "encoding": "binary"
+    },
+    {
+      "path": "nexalloy-rom/remove-vector.py",
+      "sha256": "e88834211edeb7f6694a79c474912f066370eedda5b45c80902ac25f45fdce46",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/scripts/build-modern-bridge.py",
+      "sha256": "07e3766ecbc18b1b3e3f6c2d46deffa4d2516aa239be04e46ae83aa953521ac2",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/scripts/dex-inventory.py",
+      "sha256": "5b952fa12460117996866dc23c138ce3aa5df332b23bb8bead0cf133cac19d4f",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/scripts/patch-provider-transport.py",
+      "sha256": "e34bd3293104242e74ab470423e9d48acdb949505711eb0e593eba249e4b04d4",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/shared-src/com/nothingsvn/nexalloy/BridgeContract.java",
+      "sha256": "ba9236194173e5d44353f0e00418144ce52f24f5f299339e716d5cb5f1b346c3",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/smali/android/security/ntmanager/NexAlloyRuntime.smali",
+      "sha256": "e4ccfa59e8a8744d515026e87bfc900bb0965aaa4cca7b5ea9e4e074c99babc9",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/src/android/security/ntmanager/NexAlloyRuntime.java",
+      "sha256": "7d16f81e908bd5efec908f9afaaab9fc2b7dacc885c61383151fc730e796d1c8",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/test_art_optimizer.py",
+      "sha256": "ecfdb42f29b81d171d0491d42e5279530b4350c8dffa08d237fec6a17a6d169c",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "nexalloy-rom/test_integration.py",
+      "sha256": "2e24f0f39e05416a7d6e7dc1ec5fdeeec3fa099f9e0e12d56c07fe4c053e1402",
+      "encoding": "utf8-lf"
+    },
+    {
+      "path": "app/src/main/java/utils/ntmanager/NexAlloyRuntime.java",
+      "sha256": "7d16f81e908bd5efec908f9afaaab9fc2b7dacc885c61383151fc730e796d1c8",
+      "encoding": "utf8-lf"
+    }
+  ],
+  "additional_documentation": {
+    "path": "nexalloy-rom/HUONG_DAN_NHUNG_NEXALLOY.md",
+    "origin": "NTFramework working-tree guide; relative integration links adapted to pinned source URLs"
+  }
+}

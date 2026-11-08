@@ -1,57 +1,95 @@
-# NTVector Runtime
+# NTSEXAlloy
 
-GPL-3.0 ROM integration for [Vector](https://github.com/JingMatrix/Vector).
-The original signed Vector v2.2 (3080) manager is a system app in `system_ext`,
-with a launcher icon. Users install Xposed module APKs normally, then enable
-modules and select their scopes in Vector. No module is bundled or enabled by default.
+Bộ nguồn nhúng NexAlloy-XES vào ROM Android 14 trở lên, kèm NexAlloy Manager.
+Repo được đổi tên từ NTVector-Runtime, giữ lịch sử Git và giấy phép GPL-3.0.
+Cây hiện tại dùng bộ nạp trực tiếp trong ứng dụng, không dùng Vector, Zygisk,
+daemon init hay module root để khởi động.
 
-The loader and daemon start from Android init in their own SELinux domain.
-Users do not need Magisk, KernelSU, `su` or a root-manager module. The native
-loader uses a dedicated ROM mode and a private engine directory.
+## Nguồn và phạm vi
 
-## Contents
+Mã nguồn chính của framework, bridge và dịch vụ ROM nằm ở
+[NTFramework](https://github.com/tiencv2006/NTFramework). Đây là bản phân phối
+bộ nhúng hiện tại từ `nexalloy-rom`, không phải một nhánh phát triển framework
+độc lập. [SOURCE.json](SOURCE.json) ghi commit nguồn và checksum từng file.
+PT/Xiaomi toolbuild tiếp tục dùng luồng xuất từ NTFramework, chưa đổi sang tải
+payload tự động từ repo này.
 
-- `runtime/`: tested installer, init services, split-policy integration and verified binaries.
-- `source/NeoZygisk/`: complete patched native loader source, including its pinned lsplt dependency.
-- `upstream/Vector/`: matching original Vector source, pinned as a Git submodule.
-- `runtime/neozgyisk-rom.patch`: changes against the original NeoZygisk revision.
-- `runtime/upstream.txt`: revisions, upstream release URL and SHA256 pins.
-- `runtime/verification.json`: device checks and their scope.
+- `nexalloy-rom/src`, `shared-src`, `modern-src`: runtime và bridge Java.
+- `nexalloy-rom/engine-src`, `compat`: shim và bản vá tương thích native.
+- `nexalloy-rom/controller-app`: mã nguồn NexAlloy Manager.
+- `nexalloy-rom/payload`, `deps`, `app`: payload, dependency và Manager đã build,
+  kèm checksum và giấy phép.
+- `nexalloy-rom/install.py`, `patch-jar.py`, `remove-vector.py`: tích hợp framework,
+  đóng Manager và chuyển khỏi bộ Vector cũ.
+- `app/src/main/java/utils/ntmanager/NexAlloyRuntime.java`: bản mirror của runtime
+  do `build.py` cập nhật, không phải một project Android app riêng.
 
-## Install into an extracted ROM
+ROM chứa runtime trong `system/framework/framework.jar`, Manager ở
+`system_ext/app/NexAlloyManager`. Module NexAlloy-XES **không cài sẵn**;
+Manager hướng người dùng tới [release của tác giả](https://github.com/gnadgnaoh/NexAlloy-XES/releases/).
+Công tắc chính mặc định tắt. Danh sách app lấy từ scope của module đã xác minh
+chữ ký, bộ nạp chỉ chạy trong app thuộc scope đang bật.
 
-Run `python3 runtime/install.py <images-root>` after enabling Toolbox. The tree
-must contain `system_ext` and its SELinux policy. For a standalone tree pass
-`--vendor-policy-version` from the target vendor partition explicitly.
-See [runtime documentation](runtime/README.md) for paths and startup behavior.
+## Hướng dẫn nhúng
 
-Vector compiler wrappers stay in the compiler-service namespace. App Zygotes use
-original ART compiler binaries; startup rechecks handle OEM namespace changes.
-Both owned-probe module hooks and VNeID were verified after reboot. The existing
-NT partition service remains available.
+Xem [hướng dẫn tiếng Việt](nexalloy-rom/HUONG_DAN_NHUNG_NEXALLOY.md) và
+[hợp đồng tích hợp](nexalloy-rom/README.md). Cần framework đã có NTHooks của
+NTManager trước khi chạy installer, không chép payload vào framework stock
+rồi mặc định coi là đã tích hợp.
 
-Android 14 (API 34) ROM builds exclude Vector. Reprocessing an extracted API-34
-tree also removes the integration previously added by this installer. Other
-Android versions keep the existing Vector integration.
-
-## Build and corresponding source
-
-Clone with `git clone --recurse-submodules`, or run
-`git submodule update --init --recursive` after cloning. Build the patched loader:
+Ví dụ từ thư mục gốc repo, với cây framework đã giải mã và cây phân vùng:
 
 ```sh
-python3 runtime/build-loader.py --source source/NeoZygisk --sdk /path/to/android-sdk --out build
+python3 nexalloy-rom/install.py --framework-tree /work/framework.jar.out --sdk 37
+python3 nexalloy-rom/install.py /work/images --sdk 37
 ```
 
-The original Vector source and dependency revisions are in `upstream/Vector`.
-The ROM loader build uses the committed Cargo.lock from the tested payload with `--locked`.
-Its signed manager and engine binaries are unchanged. Refer to its Gradle build
-and upstream release instructions when rebuilding Vector.
-See [licensing and provenance](NOTICE.md).
+Giữ riêng điều phối PT và Xiaomi trong NTFramework. Repack/flash cần metadata
+và phân vùng đúng thiết bị, không lấy ảnh của máy khác.
 
-## Validation
+## Build và kiểm tra
 
-Tested on ColorOS 17 / Android 17 with SELinux enforcing: cold boot, manager
-activation, module enable/disable against an owned probe, full partition
-readback, and app compiler namespace separation. The previous root-manager Vector
-module stayed disabled. Module compatibility depends on its Android/API support.
+Cần Python 3, JDK, Android SDK, D8, baksmali. Build Manager cần SDK/Gradle theo
+cấu hình trong `controller-app`. JAR libxposed API/interface 102.0.0 được lưu
+trong `deps`, kèm checksum và giấy phép.
+
+Từ thư mục gốc repo:
+
+```sh
+python3 nexalloy-rom/build.py --android-jar /sdk/platforms/android-37/android.jar --d8-jar /sdk/build-tools/37.0.0/lib/d8.jar --api-jar nexalloy-rom/deps/api.jar --interface-jar nexalloy-rom/deps/interface.jar --baksmali-jar /tools/baksmali.jar
+python3 nexalloy-rom/test_integration.py -v
+python3 nexalloy-rom/test_art_optimizer.py -v
+cd nexalloy-rom/payload
+sha256sum -c SHA256SUMS
+cd ../app
+sha256sum -c SHA256SUMS
+```
+
+`build.py` build lại bridge/runtime và smali, không tự build lại toàn bộ native
+engine. Nguồn shim, bản vá native và revision upstream nằm trong `engine-src`,
+`compat`, `metadata` và NOTICE.
+
+Build Manager release bằng khóa riêng của ROM:
+
+```sh
+cd nexalloy-rom/controller-app
+export HMA_KEYSTORE_PATH=/private/manager.jks
+export HMA_KEYSTORE_PASSWORD='your-password'
+export HMA_KEY_ALIAS='your-alias'
+export HMA_KEY_PASSWORD='your-password'
+./gradlew :app:assembleRelease --no-daemon
+```
+
+Repo không chứa khóa ký. Chữ ký Manager phải khớp pin được bridge tin cậy.
+Đổi khóa cần cập nhật pin trong nguồn NTFramework, build và xuất lại payload.
+Không bỏ kiểm tra chữ ký để dùng APK khác.
+
+Android 17 có kết quả thử thiết bị trong tài liệu nguồn. Android 14–16 có kiểm
+tra host/build, chưa có phép thử thiết bị mới cho bản snapshot này. Kiểm tra
+host không thay cho kiểm tra boot và hook trên ROM đích.
+
+## Giấy phép
+
+[GPL-3.0](LICENSE), giữ [ghi công và thông tin thành phần](NOTICE.md).
+Giấy phép libxposed, LSPlant/AliuHook và libc++ được giữ theo từng thành phần.
+Module gốc do người dùng tải độc lập, không nằm trong repo này.

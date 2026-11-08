@@ -2,3 +2,10 @@
 **/__pycache__/
 *.pyc
 .idea/
+**/.gradle/
+**/.kotlin/
+**/build/
+**/local.properties
+*.idsig
+*.jks
+*.keystore

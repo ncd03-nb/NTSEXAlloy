@@ -1,28 +1,66 @@
-# Licensing and provenance
+# Attribution and notices
 
-This ROM integration is distributed under GNU GPL version 3. See [LICENSE](LICENSE).
-Upstream copyright, license headers and attribution remain in the corresponding sources.
+## Original NexAlloy project
 
-## Vector
+- Project: [NexAlloy/NexAlloy](https://github.com/NexAlloy/NexAlloy)
+- Original author and maintainer: **ChsBuffer**
+  ([@chsbuffer](https://github.com/chsbuffer))
+- License: GNU General Public License v3.0
 
-- Project: JingMatrix and Vector contributors, https://github.com/JingMatrix/Vector
-- Revision: `88f8e1faa8b4e7ce20aefabe9c295cd746ea038e` (v2.2, 3080).
-- Corresponding original source: `upstream/Vector`, including its pinned dependency revisions.
-- Unmodified release manager and engine: `runtime/dist/vector`.
-- License copy: `runtime/Vector-LICENSE`.
+NexAlloy is the upstream LSPosed module and patch implementation. No upstream source file is
+claimed as original NothingsVN work.
 
-## NeoZygisk ROM loader
+## NexAlloy-XES fork
 
-- Project: JingMatrix and NeoZygisk contributors, https://github.com/JingMatrix/NeoZygisk
-- Base revision: `225b32b802cff876c09a4a8ec4a1677ce0538c39`.
-- Modified corresponding source: `source/NeoZygisk`.
-- Changes: `runtime/neozgyisk-rom.patch`; build: `runtime/build-loader.py`.
-- License copy: `runtime/NeoZygisk-LICENSE`.
+- Project: [gnadgnaoh/NexAlloy-XES](https://github.com/gnadgnaoh/NexAlloy-XES)
+- Fork author and maintainer: **XES SEX**
+  ([@gnadgnaoh](https://github.com/gnadgnaoh))
+- Based on: `NexAlloy/NexAlloy`
+- License: GNU General Public License v3.0
 
-## Dependencies
+Contributors visible in the fork history at the time this integration was published:
 
-- lsplt revision `2cfb537d7e8588abefbd3ddc55cacf3188662f9e` is included under
-  `source/NeoZygisk/loader/src/external/lsplt` with its license and notices.
-- Vector dependencies retain their original licenses in its recursive source submodules.
-- Payload checksums and original release provenance are recorded in `runtime/manifest.json`
-  and `runtime/upstream.txt`.
+- **XES SEX** (`@gnadgnaoh`)
+- **ChsBuffer** (`@chsbuffer`)
+- **Fioren** (`@FiorenMas`)
+- **Moeta Yuko** (`@moetayuko`)
+
+These names are included to preserve attribution. The complete and authoritative contribution
+history remains in the upstream Git repositories.
+
+## NothingsVN adapter
+
+The framework loading adapter, ROM integration contract, and export tooling in this repository
+were prepared by **NothingsVN contributors**, maintained at
+[@tiencv2006](https://github.com/tiencv2006).
+
+The adapter calls the upstream payload through its published runtime classes. It does not transfer
+ownership of upstream patches, hook implementations, native libraries, branding, or trademarks.
+
+## Third-party components used by the payload
+
+The ROM embeds the pinned LSPlant/AliuHook/libc++ loader libraries and an API-only
+Xposed shim from the previously tested integration. The shim's matching smali is in
+`engine-src/`; native compatibility patches are in `compat/native/`. Upstream native
+projects are https://github.com/LSPosed/LSPlant and https://github.com/Aliucord/Hook.
+Their own licenses and notices apply. NexAlloy's application/patch code, DexKit,
+Morphe and ReVanced are supplied by the user's independently installed original
+module APK, not bundled into the ROM. Historical binary provenance is preserved in
+[NTVector-Runtime commit fe8a6284e7139330e73f2818c015277ee70bae9b](https://github.com/ncd03-nb/NTSEXAlloy/tree/fe8a6284e7139330e73f2818c015277ee70bae9b).
+SHA256 pins are in `payload/SHA256SUMS`.
+
+## Original APK bridge
+
+The original-only ROM bridge uses libxposed API and interface 102.0.0, licensed
+under Apache License 2.0 by the libxposed contributors. Source projects:
+https://github.com/libxposed/api and https://github.com/libxposed/service.
+The full license is in `metadata/LICENSE-libxposed.txt` and is embedded with the
+bridge by the toolbuilds. No changes are made to the signed upstream module APK.
+
+## Distribution snapshot
+
+NTSEXAlloy distributes the current ROM integration from NTFramework. Canonical
+framework, bridge and ROM service development remains in NTFramework. See
+SOURCE.json for the exact source commit and file checksums. The Git history
+preserves earlier NTVector-Runtime work; its old Vector loader is not included
+in the current source tree.
